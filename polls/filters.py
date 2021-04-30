@@ -1,5 +1,5 @@
 import django_filters
-from django_filters import ChoiceFilter
+from django_filters import ChoiceFilter, CharFilter
 from .models import *
 
 class samples_filter(django_filters.FilterSet):
@@ -82,6 +82,7 @@ class samples_filter(django_filters.FilterSet):
 
     organ = ChoiceFilter(choices =  ORGAN_CHOICES, label="Organ")
     tumor_type = ChoiceFilter(choices = TUMOR_CHOICES, label="Tumor Type")
+    sample_name = CharFilter(label="Sample Name")
 
 
     class Meta:
