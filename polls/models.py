@@ -45,7 +45,6 @@ class biobank(models.Model):
 class culture_info(models.Model):
     subtype_id        = models.CharField(primary_key = True, max_length=20)
     sample_id         = models.ForeignKey(samples, on_delete=models.CASCADE)
-    sample_name       = models.CharField('sample_id', max_length=50, blank=True, null=True)
     subtype_info      = models.CharField(max_length = 30, null = True)
     first_culture     = models.DateField('First Passage',blank = True, null = True)
     culture_status    = models.CharField(max_length = 40, null = True, blank = True)
@@ -69,7 +68,6 @@ class culture_info(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.subtype_id:
-            self.sample_id = samples.objects.filter(sample_name=self.sample_name).values()[0]['sample_id']
             count = culture_info.objects.filter(sample_id=self.sample_id).count()
             self.subtype_id = "{}.{}".format(self.sample_id, count+1)
             # count = culture_info.objects.count()

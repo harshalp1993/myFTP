@@ -154,7 +154,7 @@ class culture_info_form(forms.ModelForm):
     class Meta:
         model = culture_info
         
-        exclude = ['subtype_id', 'sample_id']
+        exclude = ['subtype_id']
         # = ['passage', 'subtype']
 
 class samples_form(forms.ModelForm):
