@@ -1,0 +1,44 @@
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include "main/header.html" %}
+    <body>
+        {% include "main/navbar.html" %}
+            <div class="container p-3">
+                <p>
+                    <a href="#" onClick="javascript:history.go(-1);">
+                        <button class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-arrow-left"></span> Back
+                        </button>
+                    </a>
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>{{ table_name }} Table of Sample {{ sample_name }}</b>
+                    </div>
+                    <div class="panel-body">
+                        {% load render_table from django_tables2 %}
+                        <a href="{% url "add_culture" %}">Add</a>
+                        <div style="overflow-x:auto;">
+                            {% render_table table 'django_tables2/bootstrap.html' %}
+                        </div>  
+                        <p>Use Button or Press <kbd>Enter</kbd> to Filter</p>
+                        {% if filter %}
+                            <form action="" method="get" class="form form-inline">
+                                {% bootstrap_form filter.form layout='inline' %}
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+            <script>
+                var table_var = $(".table");
+                var tbl_row = table_var.closest('tr')[0]; 
+                console.log(tbl_row);
+            </script>
+    </body>
+</html>

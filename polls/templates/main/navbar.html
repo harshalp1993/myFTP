@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>FTPlab</title>
+        <!-- Favicons-->
+        <link rel="shortcut icon" href="assets/images/logo1.png">
+        <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
+        <!-- Web Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7cPlayfair+Display:400i" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <!-- Plugins-->
+        <link href="assets/css/plugins.min.css" rel="stylesheet">
+        <!-- Template core CSS-->
+        <link href="assets/css/template.css" rel="stylesheet">
+    </head>
+
+    
+<div class="container p-3" style="margin-top: 10px">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <nobr>
+                    <img src="{% static '/assets/logo1.png' %}" alt="logo" style="width:20px;height:20px;margin-bottom:5px">
+                    FTPdb
+                    </nobr>
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/polls">Home</a></li>
+		<li class="active"><a href="/polls/cultures_all">Cultures</a></li>
+		<li class="active"><a href="/polls/passages_all">Passages</a></li>
+		<li class="active"><a href="/polls/freezing_all">Freezing Info</a></li>
+		<li class="active"><a href="/polls/cellbiobank">CellBiobank</a></li>
+
+            </ul>
+            <form class="navbar-form navbar-right" action="">
+                
+                <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+</div>

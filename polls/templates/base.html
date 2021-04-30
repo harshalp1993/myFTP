@@ -1,0 +1,16 @@
+
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    {% include "main/header.html" %}
+    <body>
+        {% include "main/navbar.html" %}
+            <div class="container p-3">
+		{% block content %}
+		{% endblock %}
+            </div>
+    </body>
+</html>
+

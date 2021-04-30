@@ -1,0 +1,49 @@
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+{% load static %}  
+<!DOCTYPE html>
+<html lang="en">
+    {% include "main/header.html" %}
+    <body>
+        {% include "main/navbar.html" %}
+            <div class="container p-3">
+                <p>
+                    <a href="#" onClick="javascript:history.go(-1);">
+                        <button class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-arrow-left"></span> Back
+                        </button>
+                    </a>
+                </p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>Edit Freezing {{ culture.SubtypeID }}</b>
+                    </div>
+                    <div class="panel-body">
+                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <table>
+                                    {{form.as_table}}
+                                </table>
+                                
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>Further Content</b>
+                    </div>
+                    <div class="panel-body">
+                        Here any further content if required.
+                    </div>
+                </div>
+            </div>
+        <script src="{% static 'bootstrap-input-spinner.js' %}"></script> 
+        <script>
+            $("input[type='number']").inputSpinner()
+        </script> 
+    </body>
+</html>
