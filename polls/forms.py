@@ -104,14 +104,14 @@ MEDIA_CHOICES = [('GHM', 'GHM'),
 
 ]
 
-# SAMPLE_CHOICES = samples.objects.values_list('sample_id', 'sample_name')
+SAMPLE_CHOICES = samples.objects.values_list('sample_id', 'sample_name')
 
 class culture_info_form(forms.ModelForm):
-    # sample_name = forms.ChoiceField(
-    #     required=False,
-    #     widget=forms.Select,
-    #     choices=SAMPLE_CHOICES,
-    # )
+    sample_name = forms.ChoiceField(
+        required=False,
+        widget=forms.Select,
+        choices=SAMPLE_CHOICES,
+    )
     first_culture = forms.DateField(widget=forms.widgets.DateInput(attrs={'type':'Date'}))
     last_culture = forms.DateField(widget=forms.widgets.DateInput(attrs={'type':'Date'}))
     date_consent = forms.DateField(widget=forms.widgets.DateInput(attrs={'type':'Date'}), required=False)
@@ -154,7 +154,7 @@ class culture_info_form(forms.ModelForm):
     class Meta:
         model = culture_info
         
-        exclude = ['subtype_id']
+        exclude = ['subtype_id', 'sample_id']
         # = ['passage', 'subtype']
 
 class samples_form(forms.ModelForm):

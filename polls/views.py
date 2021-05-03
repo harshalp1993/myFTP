@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django_tables2 import RequestConfig
+# from typing_extensions import Required
 from .models import *
 from .tables import *
 from .filters import *
@@ -97,8 +98,12 @@ def edit_culture(request, sample_id):
 
 def add_culture(request):
     form = culture_info_form(request.POST or None)
-    # form.instance.sample_id = form.cleaned_data['sample_name'].sample_id
+    # print(request.POST.get('sample_name'))
+    # sample_name = request.POST['sample_name'][1]
+    # print(sample_name)
     if form.is_valid():
+        form.cleaned_data['sample_id'] = request.POST.get('sample_name')
+        print(form.cleaned_data['sample_id'])
         form.save()
         return redirect('cultures_view', sample_id=form.cleaned_data['sample_id'].sample_id)
         # redirect or show save form again
