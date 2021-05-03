@@ -102,7 +102,7 @@ def add_culture(request):
     # sample_name = request.POST['sample_name'][1]
     # print(sample_name)
     if form.is_valid():
-        form.cleaned_data['sample_id'] = request.POST.get('sample_name')
+        # form.cleaned_data['sample_id'] = request.POST.get('sample_name')
         print(form.cleaned_data['sample_id'])
         form.save()
         return redirect('cultures_view', sample_id=form.cleaned_data['sample_id'].sample_id)

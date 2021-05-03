@@ -12,6 +12,13 @@ class samples_table(django_tables2.Table):
     class Meta:
         model = samples
 
+def status_color_for_row(**kwargs):
+    row = kwargs.get("record", None)
+    if row.status == "Terminated":
+        return "color:red;"
+    else:
+        return ''
+
 class cultures_table(django_tables2.Table):
 
     order           = django_tables2.LinkColumn('molecular_order', text='view',     args=[A('pk')])
@@ -20,6 +27,9 @@ class cultures_table(django_tables2.Table):
     delete          = django_tables2.LinkColumn('delete_culture',  text='Delete',   args=[A('pk')])
     class Meta:
         model = culture_info
+        row_attrs = {
+            "style": status_color_for_row
+        }
         #exclude = ("cell_block", "patient_consent", "DateOfConsent", "Comments",)
 
 
